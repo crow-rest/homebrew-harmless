@@ -27,9 +27,7 @@ class Zig < Formula
 
     args = ["-DCMAKE_BUILD_TYPE=Release", "-DZIG_STATIC_LLVM=ON"]
     args << "-DZIG_TARGET_MCPU=#{cpu}" if build.bottle?
-    on_linux do
-      args << "-DZIG_TARGET_TRIPLE=x86_64-linux-musl"
-    end
+    args << "-DZIG_TARGET_TRIPLE=x86_64-linux-musl" if OS.linux?
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
