@@ -20,13 +20,13 @@ class Zig < Formula
 
   def install
     ENV.O3
-    #     cpu = case Hardware.oldest_cpu
-    #     when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
-    #     else Hardware.oldest_cpu
-    #     end
+    # cpu = case Hardware.oldest_cpu
+    # when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
+    # else Hardware.oldest_cpu
+    # end
 
-    args = ["-DZIG_STATIC_LLVM=ON"]
-    args << "-DZIG_TARGET_MCPU=#{cpu}" if build.bottle?
+    args = ["-DCMAKE_BUILD_TYPE=Release", "-DZIG_STATIC_LLVM=ON"]
+    # args << "-DZIG_TARGET_MCPU=#{cpu}" if build.bottle?
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "cmake", "--build", "build"
