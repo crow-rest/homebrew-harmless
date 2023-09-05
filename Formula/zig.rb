@@ -12,11 +12,11 @@ class Zig < Formula
 
   depends_on "cmake" => :build
   depends_on "llvm@16" => :build
+  depends_on "zstd" => :build
   depends_on macos: :big_sur # https://github.com/ziglang/zig/issues/13313
   depends_on "z3"
-  depends_on "zstd"
-  uses_from_macos "ncurses"
-  uses_from_macos "zlib"
+  uses_from_macos "ncurses" => :build
+  uses_from_macos "zlib" => :build
 
   fails_with :gcc
 
