@@ -32,8 +32,6 @@ class Zig < Formula
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
     system "ninja", "-C", "build", "install"
-    # system "cmake", "--build", "build"
-    # system "cmake", "--install", "build"
   end
 
   test do
