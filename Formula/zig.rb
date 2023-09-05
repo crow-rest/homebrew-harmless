@@ -12,26 +12,26 @@ class Zig < Formula
 
   depends_on "cmake" => :build
   depends_on "llvm@16" => :build
-  depends_on "ninja" => :build
+  depends_on macos: :big_sur # https://github.com/ziglang/zig/issues/13313
+  depends_on "z3"
   depends_on "zstd"
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
-  # fails_with gcc: "6" # LLVM is built with GCC
   fails_with :gcc
 
   def install
-    ENV.O3
     cpu = case Hardware.oldest_cpu
     when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
     else Hardware.oldest_cpu
     end
 
-    args = ["-DCMAKE_BUILD_TYPE=Release", "-DZIG_STATIC_LLVM=ON", "-GNinja"]
+    args = ["-DZIG_STATIC_LLVM=ON"]
     args << "-DZIG_TARGET_MCPU=#{cpu}" if build.bottle?
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
-    system "ninja", "-C", "build", "install"
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
