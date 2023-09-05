@@ -21,7 +21,7 @@ class Zig < Formula
   fails_with :gcc
 
   def install
-    ENV.O3
+    ENV.O1
     cpu = case Hardware.oldest_cpu
     when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
     else Hardware.oldest_cpu
