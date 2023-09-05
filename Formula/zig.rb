@@ -19,7 +19,7 @@ class Zig < Formula
   fails_with gcc: "6" # LLVM is built with GCC
 
   def install
-    ENV.O3
+    ENV.O2
     cpu = case Hardware.oldest_cpu
     when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
     else Hardware.oldest_cpu
