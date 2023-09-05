@@ -19,11 +19,11 @@ class Zig < Formula
   fails_with gcc: "6" # LLVM is built with GCC
 
   def install
-    ENV.O0
-    cpu = case Hardware.oldest_cpu
-    when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
-    else Hardware.oldest_cpu
-    end
+    #     ENV.O0
+    #     cpu = case Hardware.oldest_cpu
+    #     when :arm_vortex_tempest then "apple_m1" # See `zig targets`.
+    #     else Hardware.oldest_cpu
+    #     end
 
     args = ["-DZIG_STATIC_LLVM=ON"]
     args << "-DZIG_TARGET_MCPU=#{cpu}" if build.bottle?
