@@ -10,6 +10,12 @@ class CargoPrebuilt < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
+  bottle do
+    root_url "https://github.com/crow-rest/homebrew-harmless/releases/download/cargo-prebuilt-0.6.3"
+    sha256 cellar: :any_skip_relocation, monterey:     "0fbec69a6dae689463a14088792ba48b66d9589f4588a4c294b59d4b3f60dd3b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "b743d5c65f537c3b6c450e75343472b7b82cb0771b0ebc296c6f48be63ff6b84"
+  end
+
   on_macos do
     on_intel do
       url "https://github.com/cargo-prebuilt/cargo-prebuilt/releases/download/v#{version}/x86_64-apple-darwin.tar.gz"
