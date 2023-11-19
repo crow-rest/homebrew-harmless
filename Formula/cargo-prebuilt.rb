@@ -1,7 +1,7 @@
 class CargoPrebuilt < Formula
   desc "Cli tool to download prebuilt binaries of some crate.io crates"
   homepage "https://github.com/cargo-prebuilt/cargo-prebuilt"
-  version "0.6.3"
+  version "0.6.4"
   license "MIT"
   head "https://github.com/cargo-prebuilt/cargo-prebuilt.git", branch: "main"
 
@@ -10,31 +10,25 @@ class CargoPrebuilt < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  bottle do
-    root_url "https://github.com/crow-rest/homebrew-harmless/releases/download/cargo-prebuilt-0.6.3"
-    sha256 cellar: :any_skip_relocation, monterey:     "0fbec69a6dae689463a14088792ba48b66d9589f4588a4c294b59d4b3f60dd3b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "b743d5c65f537c3b6c450e75343472b7b82cb0771b0ebc296c6f48be63ff6b84"
-  end
-
   on_macos do
     on_intel do
       url "https://github.com/cargo-prebuilt/cargo-prebuilt/releases/download/v#{version}/x86_64-apple-darwin.tar.gz"
-      sha256 "0671d9e54dd9c03bd05a6c97d2517a2fba4c78694fdbfb0808ad63c254af8a24"
+      sha256 "6b9418e5db278d00426d2092f85ce2673239dfaab4dc00602bf720420dbc107a"
     end
     on_arm do
       url "https://github.com/cargo-prebuilt/cargo-prebuilt/releases/download/v#{version}/aarch64-apple-darwin.tar.gz"
-      sha256 "44d2ab948aa7ea45092aff548d496297ca155dea68528e7be5986f3ae8de9879"
+      sha256 "c4611f5348b41592177621972c0556803d8a9752aa3277a7e70c621b38c5545f"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/cargo-prebuilt/cargo-prebuilt/releases/download/v#{version}/x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "a2a98948a501637eb9b322b0d776b6c72bce11db56e1240e989da436d1cd2982"
+      sha256 "32a04d8c3be6cfe5c91de63727432b4f047e091691d532659f62482bb53e5ccc"
     end
     on_arm do
       url "https://github.com/cargo-prebuilt/cargo-prebuilt/releases/download/v#{version}/aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "7a1d3f05bf521fa5ead8f468cc4c307142154c25049470f492a91e0c7d27c012"
+      sha256 "aa726e0a0f3510d258a11e784baf7e2f6a5ad2d5ea9eb03402281891b0d64296"
     end
   end
 
