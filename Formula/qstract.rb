@@ -32,6 +32,16 @@ class Qstract < Formula
   end
 
   def install
+    if OS.mac?
+      mv "qstract-x86_64-apple-darwin", "qstract" if Hardware::CPU.intel?
+      mv "qstract-aarch64-apple-darwin", "qstract" if Hardware::CPU.arm?
+    end
+
+    if OS.linux?
+      mv "qstract-x86_64-unknown-linux-gnu", "qstract" if Hardware::CPU.intel?
+      mv "qstract-aarch64-unknown-linux-gnu", "qstract" if Hardware::CPU.arm?
+    end
+
     bin.install "qstract"
   end
 
