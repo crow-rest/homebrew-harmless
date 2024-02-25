@@ -9,6 +9,13 @@ class Qstract < Formula
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
+  bottle do
+    root_url "https://github.com/crow-rest/homebrew-harmless/releases/download/qstract-64-unknown-linux-gnu"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "ed9bf7ee3828538405c78a63036cca749b0cee49fa48cfd4d7398349d94ae830"
+    sha256 cellar: :any_skip_relocation, ventura:      "76f88c077e0994f42bf98102cd4bac1f35ca6a003d0ed75e11b955bf35755cad"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "adb0ab0c9b976cac1c6bf2762f8800c95439200a1367844efb2598162e8f4539"
+  end
+
   on_macos do
     on_intel do
       url "https://github.com/cargo-prebuilt/qstract/releases/download/v0.1.0/qstract-x86_64-apple-darwin"
